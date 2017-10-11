@@ -53,12 +53,19 @@ function onCreateAnswer() {
     });
 }
 
+function onSetLocal() {
+  const descr = JSON.parse(document.querySelector('.local-sdp').value);
+  document.querySelector('.local-sdp').setAttribute('disabled', true);
+  pc.setLocalDescription(new RTCSessionDescription(descr));
+}
+
 </script>
 </head>
 <body>
 <button onclick="onCapture()" class="capture-btn">capture video</button>
 <button onclick="onCreateOffer()">offer</button>
 <button onclick="onCreateAnswer()">answer</button>
+<button onclick="onSetLocal()">set local sdp</button>
 <textarea class="local-sdp" placeholder="local sdp"></textarea>
 <button onclick="onSetRemote()">set remote sdp</button>
 <textarea class="remote-sdp" placeholder="remote sdp"></textarea>
