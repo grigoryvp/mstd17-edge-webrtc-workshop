@@ -17,6 +17,9 @@ const pc = new RTCPeerConnection({
 
 function onCapture() {
   document.querySelector('.capture-btn').setAttribute('disabled', true);
+  navigator.mediaDevices.getUserMedia({video: true})
+    .then(stream => {
+    });
 }
 </script>
 </head>
