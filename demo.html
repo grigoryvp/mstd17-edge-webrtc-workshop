@@ -39,12 +39,21 @@ function onCreateOffer() {
       document.querySelector('.local-sdp').value = JSON.stringify(offer);
     });
 }
+
+function onSetRemote() {
+  const descr = JSON.parse(document.querySelector('.remote-sdp').value);
+  document.querySelector('.remote-sdp').setAttribute('disabled', true);
+  pc.setRemoteDescription(new RTCSessionDescription(descr));
+}
+
 </script>
 </head>
 <body>
 <button onclick="onCapture()" class="capture-btn">capture video</button>
 <button onclick="onCreateOffer()">offer</button>
 <textarea class="local-sdp" placeholder="local sdp"></textarea>
+<button onclick="onSetRemote()">set remote sdp</button>
+<textarea class="remote-sdp" placeholder="remote sdp"></textarea>
 <video class="local-video"></video>
 </body>
 </html>
