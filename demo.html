@@ -14,11 +14,14 @@ const pc = new RTCPeerConnection({
     credential: 'redmond123',
   }]
 });
-console.log(pc);
+
+function onCapture() {
+  document.querySelector('.capture-btn').setAttribute('disabled', true);
+}
 </script>
 </head>
 <body>
-<div>Here be dragons!</div>
+<button onclick="onCapture()" class="capture-btn">capture video</button>
 </body>
 </html>
 
