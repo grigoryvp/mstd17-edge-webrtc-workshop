@@ -30,6 +30,12 @@ pc.onicecandidate = e => { if (e.candidate) {
   element.value = JSON.stringify(candidateList);
 }}
 
+pc.onaddstream = e => { if (e.stream) {
+  const element = document.querySelector(".remote-video");
+  element.src = window.URL.createObjectURL(e.stream);
+  element.play();
+}}
+
 function onCapture() {
   document.querySelector('.capture-btn').setAttribute('disabled', true);
   navigator.mediaDevices.getUserMedia({video: true})
@@ -90,6 +96,7 @@ function onSetCandidateList() {
 <button onclick="onSetCandidateList()">set remote candidates</button>
 <textarea class="remote-candidate-list" placeholder="remote candidates"></textarea>
 <video class="local-video"></video>
+<video class="remote-video"></video>
 </body>
 </html>
 
