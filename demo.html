@@ -29,6 +29,7 @@ function onCapture() {
       const element = document.querySelector(".local-video");
       element.src = window.URL.createObjectURL(stream);
       element.play();
+      pc.addStream(stream);
     });
 }
 </script>
