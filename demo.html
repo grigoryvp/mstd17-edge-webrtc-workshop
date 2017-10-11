@@ -36,6 +36,7 @@ function onCapture() {
 function onCreateOffer() {
   pc.createOffer()
     .then(offer => {
+      document.querySelector('.local-sdp').value = JSON.stringify(offer);
     });
 }
 </script>
@@ -43,6 +44,7 @@ function onCreateOffer() {
 <body>
 <button onclick="onCapture()" class="capture-btn">capture video</button>
 <button onclick="onCreateOffer()">offer</button>
+<textarea class="local-sdp" placeholder="local sdp"></textarea>
 <video class="local-video"></video>
 </body>
 </html>
