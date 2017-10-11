@@ -67,6 +67,14 @@ function onSetLocal() {
   pc.setLocalDescription(new RTCSessionDescription(descr));
 }
 
+function onSetCandidateList() {
+  const element = document.querySelector('.remote-candidate-list');
+  const candidateList = JSON.parse(element.value);
+  element.setAttribute('disabled', true);
+  for (const candidate of candidateList) {
+    pc.addIceCandidate(new RTCIceCandidate(candidate));
+  }
+}
 </script>
 </head>
 <body>
@@ -79,6 +87,8 @@ function onSetLocal() {
 <textarea class="remote-sdp" placeholder="remote sdp"></textarea>
 <div>local candidates</div>
 <textarea class="local-candidate-list" placeholder="local candidates"></textarea>
+<button onclick="onSetCandidateList()">set remote candidates</button>
+<textarea class="remote-candidate-list" placeholder="remote candidates"></textarea>
 <video class="local-video"></video>
 </body>
 </html>
