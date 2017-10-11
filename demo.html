@@ -32,10 +32,17 @@ function onCapture() {
       pc.addStream(stream);
     });
 }
+
+function onCreateOffer() {
+  pc.createOffer()
+    .then(offer => {
+    });
+}
 </script>
 </head>
 <body>
 <button onclick="onCapture()" class="capture-btn">capture video</button>
+<button onclick="onCreateOffer()">offer</button>
 <video class="local-video"></video>
 </body>
 </html>
